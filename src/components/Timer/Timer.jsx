@@ -30,8 +30,8 @@ class Timer extends Component {
     return (
       <div>
         <div>{formatTime(this.props.remainingTime)}</div>
-        <button>START</button>
-        <button>RESET</button>
+        <button onClick={this.props.handleTimer}>{this.props.isTiming ? 'STOP' : 'START'}</button>
+        <button onClick={this.props.resetTimer}>RESET</button>
       </div>
     );
   }

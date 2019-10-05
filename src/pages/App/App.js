@@ -28,8 +28,44 @@ class App extends Component {
     };
   }
 
+  /*--- Callback Methods ---*/
+  startTimer = () => {
+    if (this.state.remainingTime > 0) {
+      this.setState({ isTiming: true });
+    }
+  }
+
+  // Stop the Timer at the current time 
+  stopTimer = () => {
+  	this.setState(state => ({ isTiming: false }), () => {
+      console.log("Stopping Timer");
+    });
+  }
+
+  // Handle action of start/stop button depending on state 'isRunning'
+  handleTimer = () => {
+  	if(this.state.isTiming) {
+  		this.stopTimer();
+  	} else {
+  		this.startTimer();
+  	}
+  }
+
+  // Reset the timer to beginning
+  resetTimer = () => {
+  	// Stop the timer before trying to reset
+  	if(this.state.isTiming) this.stopTimer();
+
+  	this.setState(this.getInitialState(), () => {
+      console.log("Resetting timer");
+      // this.componentDidMount();
+    });
+
+  	
+  }
+
   handleTimerUpdate = () => {
-    this.setState((curState) => ({elapsedTime: --curState.elapsedTime}));
+    this.setState((curState) => ({remainingTime: --curState.remainingTime}));
   }
 
   handleLogout = () => {
@@ -69,6 +105,8 @@ class App extends Component {
               handleTimerUpdate={this.handleTimerUpdate}
               remainingTime={this.state.remainingTime}
               isTiming={this.state.isTiming}
+              handleTimer={this.handleTimer}
+              resetTimer={this.resetTimer}
             />
           }/>
         </Switch>
