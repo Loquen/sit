@@ -16,8 +16,20 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
+      ...this.getInitialState(),
       user: userService.getUser()
     };
+  }
+
+  getInitialState() {
+    return {
+      remainingTime: 300,
+      isTiming: false
+    };
+  }
+
+  handleTimerUpdate = () => {
+    this.setState((curState) => ({elapsedTime: --curState.elapsedTime}));
   }
 
   handleLogout = () => {
@@ -28,8 +40,6 @@ class App extends Component {
   handleSignupOrLogin = () => {
     this.setState({user: userService.getUser()});
   }
-
-
 
   render() {
     return (
@@ -56,6 +66,9 @@ class App extends Component {
           }/>
           <Route exact path='/timer' render={() => 
             <TimerPage
+              handleTimerUpdate={this.handleTimerUpdate}
+              remainingTime={this.state.remainingTime}
+              isTiming={this.state.isTiming}
             />
           }/>
         </Switch>

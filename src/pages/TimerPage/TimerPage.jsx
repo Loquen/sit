@@ -6,6 +6,11 @@ class TimerPage extends Component {
     return (
       <div>
         TimerPage
+        <TimerContainer 
+          handleTimerUpdate={this.props.handleTimerUpdate}
+          remainingTime={this.props.remainingTime}
+          isTiming={this.props.isTiming}
+        />
       </div>
     );
   }
