@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import TimerContainer from '../../components/TimerContainer/TimerContainer';
 
 class TimerPage extends Component {
   render() {
