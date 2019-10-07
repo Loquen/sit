@@ -17,7 +17,8 @@ class App extends Component {
     super();
     this.state = {
       ...this.getInitialState(),
-      user: userService.getUser()
+      user: userService.getUser(),
+      userSetTime: 0
     };
   }
 
@@ -57,12 +58,10 @@ class App extends Component {
   	// Stop the timer before trying to reset
   	if(this.state.isTiming) this.stopTimer();
 
-  	this.setState(this.getInitialState(), () => {
-      console.log("Resetting timer");
-      // this.componentDidMount();
-    });
-
-  	
+  	this.setState((curState) => ({
+      ...this.getInitialState(),
+      remainingTime: curState.userSetTime    
+    }));
   }
 
   handleTimerUpdate = () => {
@@ -92,8 +91,12 @@ class App extends Component {
   }
 
   setTimer = (seconds) => {
+    if(this.state.isTiming) this.stopTimer();
+    
     this.setState((curState) => ({
-      remainingTime: seconds
+      remainingTime: seconds,
+      userSetTime: seconds,
+      showModal: false
     }))
   }
 
