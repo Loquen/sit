@@ -6,14 +6,11 @@ class Modal extends Component {
     if(!this.props.show) {
       return null;
     }
-    
+
     return (
       <div className="Modal">
-        <header>{this.props.title}</header>
         <div>{this.props.children}</div>
-        <footer>
-          <button>CANCEL</button> <button>SET</button>
-        </footer>
+        
       </div>
     )
   }

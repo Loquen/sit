@@ -75,15 +75,33 @@ class App extends Component {
   }
 
   handleSignupOrLogin = () => {
-    this.setState({user: userService.getUser()});
+    this.setState({ user: userService.getUser() });
+  }
+
+  closeModal = () => {
+    this.setState({
+      showModal: false
+    });
   }
 
   handleSetTime = () => {
-    console.log('set time');
+    this.setState({
+      showModal: true,
+      showSetTimeModal: true
+    });
+  }
+
+  setTimer = (seconds) => {
+    this.setState((curState) => ({
+      remainingTime: seconds
+    }))
   }
 
   handleSetVideo = () => {
-    console.log('set video');
+    this.setState({
+      showModal: true,
+      showSetTimeModal: false
+    });
   }
 
   render() {
@@ -115,6 +133,8 @@ class App extends Component {
               isTiming={this.state.isTiming}
               resetTimer={this.resetTimer}
               showModal={this.state.showModal}
+              closeModal={this.closeModal}
+              setTimer={this.setTimer}
               showSetTimeModal={this.state.showSetTimeModal}
               handleTimerUpdate={this.handleTimerUpdate}
               handleTimer={this.handleTimer}

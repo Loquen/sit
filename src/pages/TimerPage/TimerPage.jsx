@@ -21,13 +21,19 @@ class TimerPage extends Component {
         </div>
         <div>
           <Modal 
-            title="Options"
             show={this.props.showModal}
           >
             {this.props.showSetTimeModal ?(
-              <SetTimeModal/>
+              <SetTimeModal
+                setTimer={this.props.setTimer}
+                closeModal={this.props.closeModal}
+                title="Set the Timer"
+              />
             ) : (
-              <SetVideoModal/>
+              <SetVideoModal
+                closeModal={this.props.closeModal}
+                title="Choose a Video"
+              />
             )}
             
           </Modal>
