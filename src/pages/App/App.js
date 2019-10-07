@@ -111,6 +111,7 @@ class App extends Component {
     return (
       <div className="App">
         <NavBar 
+          user={this.state.user}
           handleLogout={this.handleLogout}
         />
         <Switch>
