@@ -23,7 +23,7 @@ class App extends Component {
 
   getInitialState() {
     return {
-      remainingTime: 300,
+      remainingTime: 10,
       isTiming: false
     };
   }
@@ -102,11 +102,13 @@ class App extends Component {
           }/>
           <Route exact path='/timer' render={() => 
             <TimerPage
-              handleTimerUpdate={this.handleTimerUpdate}
               remainingTime={this.state.remainingTime}
               isTiming={this.state.isTiming}
-              handleTimer={this.handleTimer}
               resetTimer={this.resetTimer}
+              handleTimerUpdate={this.handleTimerUpdate}
+              handleTimer={this.handleTimer}
+              handleSetTime={this.handleSetTime}
+              handleSetVideo={this.handleSetVideo}
             />
           }/>
         </Switch>

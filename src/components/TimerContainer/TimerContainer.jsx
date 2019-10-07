@@ -5,7 +5,6 @@ class TimerContainer extends Component {
   render() {
     return (
       <div>
-        TimerContainer
         <Timer
           handleTimerUpdate={this.props.handleTimerUpdate}
           remainingTime={this.props.remainingTime}

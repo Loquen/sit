@@ -12,7 +12,7 @@ class Timer extends Component {
   
   handleTick = () => {
     // Ignore ticks?
-    if (!this.props.isTiming) return;
+    if (!this.props.isTiming || this.props.remainingTime <= 0) return;
     this.props.handleTimerUpdate();
   };
 
