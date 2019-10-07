@@ -24,7 +24,8 @@ class App extends Component {
   getInitialState() {
     return {
       remainingTime: 10,
-      isTiming: false
+      isTiming: false,
+      showModal: false,
     };
   }
 
@@ -77,6 +78,14 @@ class App extends Component {
     this.setState({user: userService.getUser()});
   }
 
+  handleSetTime = () => {
+    console.log('set time');
+  }
+
+  handleSetVideo = () => {
+    console.log('set video');
+  }
+
   render() {
     return (
       <div className="App">
@@ -105,6 +114,8 @@ class App extends Component {
               remainingTime={this.state.remainingTime}
               isTiming={this.state.isTiming}
               resetTimer={this.resetTimer}
+              showModal={this.state.showModal}
+              showSetTimeModal={this.state.showSetTimeModal}
               handleTimerUpdate={this.handleTimerUpdate}
               handleTimer={this.handleTimer}
               handleSetTime={this.handleSetTime}

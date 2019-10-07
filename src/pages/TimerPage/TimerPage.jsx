@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import TimerContainer from '../../components/TimerContainer/TimerContainer';
 import Modal from '../../components/Modal/Modal';
+import SetTimeModal from '../../components/Modal/SetTimeModal';
+import SetVideoModal from '../../components/Modal/SetVideoModal';
 
 class TimerPage extends Component {
   render() {
@@ -15,11 +17,21 @@ class TimerPage extends Component {
         />
         <div className="option-btns">
           <button onClick={this.props.handleSetTime}>SET TIME</button>
-          <button onClick={this.props.handleSetVido}>CHOOSE VIDEO</button>
+          <button onClick={this.props.handleSetVideo}>CHOOSE VIDEO</button>
         </div>
-        <Modal title="Options">
-          
-        </Modal>
+        <div>
+          <Modal 
+            title="Options"
+            show={this.props.showModal}
+          >
+            {this.props.showSetTimeModal ?(
+              <SetTimeModal/>
+            ) : (
+              <SetVideoModal/>
+            )}
+            
+          </Modal>
+        </div>
       </div>
     );
   }

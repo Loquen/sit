@@ -1,15 +1,22 @@
-import React from "react"
+import React, { Component } from "react"
 
-const Modal = (props) => {
-	return (
-		<div className="Modal">
-			<header>{props.title}</header>
-			<div>{props.children}</div>
-			<footer>
-				<button>CANCEL</button> <button>SET</button>
-			</footer>
-		</div>
-	)
+class Modal extends Component {
+  render() {
+
+    if(!this.props.show) {
+      return null;
+    }
+    
+    return (
+      <div className="Modal">
+        <header>{this.props.title}</header>
+        <div>{this.props.children}</div>
+        <footer>
+          <button>CANCEL</button> <button>SET</button>
+        </footer>
+      </div>
+    )
+  }
 }
 
 export default Modal
