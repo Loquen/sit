@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import moment from 'moment';
 
 import userService from '../../utils/userService';
+import dayService from '../../utils/dayService';
 
 import NavBar from '../../components/NavBar/NavBar';
 import SignupPage from '../SignupPage/SignupPage';
@@ -11,6 +13,7 @@ import TimerPage from '../TimerPage/TimerPage';
 
 
 import './App.css';
+// import { async } from 'q';
 
 class App extends Component {
   constructor() {
@@ -23,8 +26,8 @@ class App extends Component {
 
   getInitialState() {
     return {
-      remainingTime: 10,
-      userSetTime: 10,
+      remainingTime: 3,
+      userSetTime: 3,
       isTiming: false,
       showModal: false,
       elapsedTime: 0
@@ -40,7 +43,18 @@ class App extends Component {
 
   // Stop the Timer at the current time 
   stopTimer = () => {
-  	this.setState(state => ({ isTiming: false }));
+    this.setState(state => ({ isTiming: false }), async function(){
+      let user = userService.getUser();
+      await dayService.todayExists(user._id, this.state.elapsedTime)      
+    });
+    // Need to now save this day to the users profile
+    // Make call to dayService's todayExists
+
+    // Then make call to dayService Create or Update 
+    // based on return from dayService of either a
+    // date id to look up, or null
+    // If null create
+    // If day id exists then update that day
   }
 
   handleTimer = () => {

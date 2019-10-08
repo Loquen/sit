@@ -9,20 +9,19 @@ require('dotenv').config();
 require('./config/database');
 
 /**************** Middleware ******************/ 
-
 app.use(logger('dev'));
 app.use(express.json());
 
-app.use(express.json());
+// app.use(express.json());
 
 app.use(favicon(path.join(__dirname, 'build', 'favicon.ico')));
 app.use(express.static(path.join(__dirname, 'build')));
 
 /**************** API Routes ******************/ 
 app.use('/api/users', require('./routes/api/users'));
+app.use('/api/days', require('./routes/api/days'));
 
 /**************** Catch All Route ******************/ 
-
 app.get('/*', function(req, res) {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });

@@ -3,8 +3,7 @@ const router = express.Router();
 const daysCtrl = require('../../controllers/days');
 
 /*---------- Public Routes ----------*/
-router.get('/days', daysCtrl.allDays);
-router.get('/timerEnd', daysCtrl.timerEnd);
+router.post('/', daysCtrl.getToday);
 router.post('/login', daysCtrl.create);
 router.put('/login', daysCtrl.update);
 

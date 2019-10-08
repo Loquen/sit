@@ -2,7 +2,11 @@ const mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 const daySchema = new mongoose.Schema({
-  date: Date,
+  date: {
+    year: Number,
+    month: Number,
+    day: Number
+  },
   totalTime: Number,
   sessions: [{
     time: String,

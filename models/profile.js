@@ -12,7 +12,7 @@ const profileSchema = new mongoose.Schema({
   }],
   daysList: [{
     type: Schema.Types.ObjectId,
-    ref: 'Days'
+    ref: 'Day'
   }]
 }, {
   timestamps: true
