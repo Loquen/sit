@@ -18,13 +18,13 @@ class App extends Component {
     this.state = {
       ...this.getInitialState(),
       user: userService.getUser(),
-      userSetTime: 0
     };
   }
 
   getInitialState() {
     return {
       remainingTime: 10,
+      userSetTime: 10,
       isTiming: false,
       showModal: false,
     };
@@ -39,12 +39,9 @@ class App extends Component {
 
   // Stop the Timer at the current time 
   stopTimer = () => {
-  	this.setState(state => ({ isTiming: false }), () => {
-      console.log("Stopping Timer");
-    });
+  	this.setState(state => ({ isTiming: false }));
   }
 
-  // Handle action of start/stop button depending on state 'isRunning'
   handleTimer = () => {
   	if(this.state.isTiming) {
   		this.stopTimer();
@@ -56,7 +53,9 @@ class App extends Component {
   // Reset the timer to beginning
   resetTimer = () => {
   	// Stop the timer before trying to reset
-  	if(this.state.isTiming) this.stopTimer();
+    if(this.state.isTiming) this.stopTimer();
+    
+    // if(this.state.userSetTime)
 
   	this.setState((curState) => ({
       ...this.getInitialState(),
@@ -79,7 +78,8 @@ class App extends Component {
 
   closeModal = () => {
     this.setState({
-      showModal: false
+      showModal: false,
+      showSetTimeModal: false
     });
   }
 

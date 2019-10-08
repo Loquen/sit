@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import styles from './Modal.module.css';
 
 class SetTimeModal extends Component {
 
@@ -28,11 +29,11 @@ class SetTimeModal extends Component {
 
   render() {
     return (
-      <div>
+      <>
         <header>{this.props.title}</header>
 
         <p>Please enter a time</p>
-        <input 
+        Hours:<input 
           type='number' 
           min='0'
           name='hour'
@@ -40,7 +41,7 @@ class SetTimeModal extends Component {
           value={this.state.hour}
           onChange={this.handleChange}
         />
-        <input 
+        Minutes:<input 
           type='number' 
           min='0'
           name='minute'
@@ -52,7 +53,7 @@ class SetTimeModal extends Component {
           <button onClick={this.props.closeModal}>CANCEL</button> 
           <button onClick={this.handleSubmit}>SET</button>
         </footer>
-      </div>
+      </>
     );
   }
 }

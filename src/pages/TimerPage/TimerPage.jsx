@@ -19,11 +19,12 @@ class TimerPage extends Component {
           <button onClick={this.props.handleSetTime}>SET TIME</button>
           <button onClick={this.props.handleSetVideo}>CHOOSE VIDEO</button>
         </div>
-        <div>
+        
           <Modal 
             show={this.props.showModal}
+            closeModal={this.props.closeModal}
           >
-            {this.props.showSetTimeModal ?(
+            {this.props.showSetTimeModal ? (
               <SetTimeModal
                 setTimer={this.props.setTimer}
                 closeModal={this.props.closeModal}
@@ -37,7 +38,6 @@ class TimerPage extends Component {
             )}
             
           </Modal>
-        </div>
       </div>
     );
   }
