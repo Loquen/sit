@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 import userService from '../../utils/userService';
 
@@ -27,6 +27,7 @@ class App extends Component {
       userSetTime: 10,
       isTiming: false,
       showModal: false,
+      elapsedTime: 0
     };
   }
 
@@ -55,8 +56,6 @@ class App extends Component {
   	// Stop the timer before trying to reset
     if(this.state.isTiming) this.stopTimer();
     
-    // if(this.state.userSetTime)
-
   	this.setState((curState) => ({
       ...this.getInitialState(),
       remainingTime: curState.userSetTime    
@@ -64,7 +63,10 @@ class App extends Component {
   }
 
   handleTimerUpdate = () => {
-    this.setState((curState) => ({remainingTime: --curState.remainingTime}));
+    this.setState((curState) => ({
+      remainingTime: --curState.remainingTime,
+      elapsedTime: ++curState.elapsedTime
+    }));
     if(this.state.remainingTime <= 0) {
       this.stopTimer();
     }
@@ -99,6 +101,7 @@ class App extends Component {
     this.setState((curState) => ({
       remainingTime: seconds,
       userSetTime: seconds,
+      elapsedTime: 0,
       showModal: false
     }))
   }

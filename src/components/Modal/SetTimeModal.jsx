@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import styles from './Modal.module.css';
 
 class SetTimeModal extends Component {
 
