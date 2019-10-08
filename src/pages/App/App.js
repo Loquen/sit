@@ -65,6 +65,9 @@ class App extends Component {
 
   handleTimerUpdate = () => {
     this.setState((curState) => ({remainingTime: --curState.remainingTime}));
+    if(this.state.remainingTime <= 0) {
+      this.stopTimer();
+    }
   }
 
   handleLogout = () => {
