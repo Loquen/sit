@@ -14,6 +14,7 @@ class TimerPage extends Component {
           isTiming={this.props.isTiming}
           handleTimer={this.props.handleTimer}
           resetTimer={this.props.resetTimer}
+          showVideoPlayer={this.props.showVideoPlayer}
         />
         <div className="option-btns">
           <button onClick={this.props.handleSetTime}>SET TIME</button>
@@ -32,6 +33,7 @@ class TimerPage extends Component {
               />
             ) : (
               <SetVideoModal
+                setVideo={this.props.setVideo}
                 closeModal={this.props.closeModal}
                 title="Choose a Video"
               />

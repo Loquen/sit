@@ -5,7 +5,7 @@ const SetVideoModal = (props) => {
     <div>
       <header>{props.title}</header>
       <footer>
-        <button onClick={props.closeModal}>CANCEL</button> <button>SET</button>
+        <button onClick={props.closeModal}>CANCEL</button> <button onClick={props.setVideo}>SET</button>
       </footer>
     </div>
   );

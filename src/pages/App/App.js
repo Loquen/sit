@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import moment from 'moment';
+// import moment from 'moment';
 
 import userService from '../../utils/userService';
 import dayService from '../../utils/dayService';
@@ -11,9 +11,7 @@ import LoginPage from '../LoginPage/LoginPage';
 import InfoPage from '../InfoPage/InfoPage';
 import TimerPage from '../TimerPage/TimerPage';
 
-
 import './App.css';
-// import { async } from 'q';
 
 class App extends Component {
   constructor() {
@@ -30,7 +28,8 @@ class App extends Component {
       userSetTime: 3,
       isTiming: false,
       showModal: false,
-      elapsedTime: 0
+      elapsedTime: 0,
+      showVideoPlayer: false,
     };
   }
 
@@ -41,20 +40,11 @@ class App extends Component {
     }
   }
 
-  // Stop the Timer at the current time 
   stopTimer = () => {
     this.setState(state => ({ isTiming: false }), async function(){
       let user = userService.getUser();
       await dayService.todayExists(user._id, this.state.elapsedTime)      
     });
-    // Need to now save this day to the users profile
-    // Make call to dayService's todayExists
-
-    // Then make call to dayService Create or Update 
-    // based on return from dayService of either a
-    // date id to look up, or null
-    // If null create
-    // If day id exists then update that day
   }
 
   handleTimer = () => {
@@ -65,9 +55,7 @@ class App extends Component {
   	}
   }
 
-  // Reset the timer to beginning
   resetTimer = () => {
-  	// Stop the timer before trying to reset
     if(this.state.isTiming) this.stopTimer();
     
   	this.setState((curState) => ({
@@ -116,7 +104,8 @@ class App extends Component {
       remainingTime: seconds,
       userSetTime: seconds,
       elapsedTime: 0,
-      showModal: false
+      showModal: false,
+      showVideoPlayer: false
     }))
   }
 
@@ -125,6 +114,16 @@ class App extends Component {
       showModal: true,
       showSetTimeModal: false
     });
+  }
+
+  setVideo = () => {
+    this.setState({
+      showVideoPlayer: true
+    }, () => {
+      this.closeModal();
+      console.log(this.state.showVideoPlayer)
+    })
+
   }
 
   render() {
@@ -159,11 +158,13 @@ class App extends Component {
               showModal={this.state.showModal}
               closeModal={this.closeModal}
               setTimer={this.setTimer}
+              setVideo={this.setVideo}
               showSetTimeModal={this.state.showSetTimeModal}
               handleTimerUpdate={this.handleTimerUpdate}
               handleTimer={this.handleTimer}
               handleSetTime={this.handleSetTime}
               handleSetVideo={this.handleSetVideo}
+              showVideoPlayer={this.state.showVideoPlayer}
             />
           }/>
         </Switch>
