@@ -9,7 +9,6 @@ const daySchema = new mongoose.Schema({
   },
   totalTime: Number,
   sessions: [{
-    time: String,
     duration: Number,
     video: {
       type: Schema.Types.ObjectId,

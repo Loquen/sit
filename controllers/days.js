@@ -4,37 +4,62 @@ var moment = require('moment');
 
 
 module.exports = {
-  create,
-  update,
-  getToday,
+  getToday
 }
 
 async function getToday(req, res) {
-  // is today in daysList?
-  // Need to grab the find the current day from db
-  // If it exists responds with that day
-  // Day.find({"date": });
   let today = {
     year: moment().year(), 
     month: moment().month(),
     day: moment().date()
   };
 
-  Profile.find({user:req.body.userId})
+  Profile.findOne({user:req.body.userId})
     .populate('daysList')
     .then(prof => {
-      console.log(prof[0].daysList);
-      // prof[0].daysList.forEach((day) => {
-
-      // })
+      // console.log(prof);
+      let latestDay =  prof.daysList[prof.daysList.length - 1];
+      // console.log(latestDay.date);
+      if(latestDay.date.day === today.day && latestDay.date.month === today.month && latestDay.date.year === today.year){
+        console.log('update: ', latestDay.id)
+        // latestDay is today, find that day and update with elapsedTime
+        let session = {
+          duration: req.body.elapsedTime,
+          video: req.body.videoId || null
+        }
+        // Day.findByIdAndUpdate(latestDay.id, { 
+        //   $inc: {totalTime: req.body.elapsedTime}, 
+        //   $push: {sessions: session} 
+        // })
+        Day.findById(latestDay.id)
+          .then(day => {
+            day.totalTime += req.body.elapsedTime;
+            day.sessions.push(session);
+            day.save();
+          })
+      } else {
+        let day = new Day({
+          date: today,
+          totalTime: req.body.elapsedTime,
+          sessions: [{
+            duration: req.body.elapsedTime,
+            video: req.body.videoId || null
+          }]
+        })
+        day.save((err, day) => {
+          console.log('create: ', day._id);
+          prof.daysList.push(day._id)
+          prof.save()
+          // Profile.findByIdAndUpdate(prof[0].id, {$push: { daysList: day._id }}, (err, profile) => {
+          //   console.log(profile);
+          // })
+        //   Profile.update(
+        //     { _id: prof[0].id }, 
+        //     { $push: { daysList: day._id } },
+            
+        // );
+        })
+      }
     })
   res.json(today);
-}
-
-async function create(req, res) {
-
-}
-
-async function update(req, res) {
-  
 }
