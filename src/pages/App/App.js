@@ -113,14 +113,19 @@ class App extends Component {
       userSetTime: seconds,
       elapsedTime: 0,
       showModal: false,
-      showVideoPlayer: false
+      showVideoPlayer: false,
+      videoId: ''
     }))
   }
 
-  handleSetVideo = () => {
+  handleSetVideo = async () => {
+    let videoList = await videoService.getVideosList();
+    // console.log(videosList);
+
     this.setState({
       showModal: true,
-      showSetTimeModal: false
+      showSetTimeModal: false,
+      videoList: videoList
     });
   }
 
@@ -139,8 +144,8 @@ class App extends Component {
       // console.log(this.state.showVideoPlayer)
     })
     // console.log(this.state.videoId)
-    let video = await videoService.getVideo('ZFJnb_kI6FA')
-    console.log(video);
+    // let video = await videoService.getVideo('ZFJnb_kI6FA')
+    // console.log(video);
 
   }
 
@@ -178,6 +183,7 @@ class App extends Component {
               setTimer={this.setTimer}
               setVideo={this.setVideo}
               videoId={this.state.videoId}
+              videoList={this.state.videoList}
               showSetTimeModal={this.state.showSetTimeModal}
               stopTimer={this.stopTimer}
               handleTimerUpdate={this.handleTimerUpdate}

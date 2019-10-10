@@ -20,7 +20,7 @@ app.use(express.static(path.join(__dirname, 'build')));
 /**************** API Routes ******************/ 
 app.use('/api/users', require('./routes/api/users'));
 app.use('/api/days', require('./routes/api/days'));
-app.use('/api/youtube', require('./routes/api/videos'));
+app.use('/api/videos', require('./routes/api/videos'));
 
 /**************** Catch All Route ******************/ 
 app.get('/*', function(req, res) {

@@ -35,6 +35,7 @@ class TimerPage extends Component {
               />
             ) : (
               <SetVideoModal
+                videoList={this.props.videoList}
                 setVideo={this.props.setVideo}
                 closeModal={this.props.closeModal}
                 title="Choose a Video"

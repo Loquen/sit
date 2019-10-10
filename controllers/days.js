@@ -17,9 +17,7 @@ async function getToday(req, res) {
   Profile.findOne({user:req.body.userId})
     .populate('daysList')
     .then(prof => {
-      // console.log(prof);
       let latestDay =  prof.daysList[prof.daysList.length - 1];
-      // console.log(latestDay.date);
       if(latestDay.date.day === today.day && latestDay.date.month === today.month && latestDay.date.year === today.year){
         console.log('update: ', latestDay.id)
         // latestDay is today, find that day and update with elapsedTime
@@ -27,10 +25,6 @@ async function getToday(req, res) {
           duration: req.body.elapsedTime,
           video: req.body.videoId || null
         }
-        // Day.findByIdAndUpdate(latestDay.id, { 
-        //   $inc: {totalTime: req.body.elapsedTime}, 
-        //   $push: {sessions: session} 
-        // })
         Day.findById(latestDay.id)
           .then(day => {
             day.totalTime += req.body.elapsedTime;
@@ -50,14 +44,6 @@ async function getToday(req, res) {
           console.log('create: ', day._id);
           prof.daysList.push(day._id)
           prof.save()
-          // Profile.findByIdAndUpdate(prof[0].id, {$push: { daysList: day._id }}, (err, profile) => {
-          //   console.log(profile);
-          // })
-        //   Profile.update(
-        //     { _id: prof[0].id }, 
-        //     { $push: { daysList: day._id } },
-            
-        // );
         })
       }
     })

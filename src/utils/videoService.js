@@ -1,3 +1,4 @@
+import tokenService from './tokenService';
 const KEY = 'AIzaSyBnfyv8NMyZ1SMkQ2N_xAvLjzsQGGUi2jc';
 const BASE_URL = 'https://www.googleapis.com/youtube/v3/'
 
@@ -14,7 +15,20 @@ async function getVideo(videoId){
     .then(res => res.json());
 }
 
+// Get array of videos back from DB
+function getVideosList(){
+  const options = {
+    method: 'GET',
+    headers: {
+      'Authorization': 'Bearer ' + tokenService.getToken()
+    }
+  };
+  return fetch(`/api/videos/`, options)
+    .then(res => res.json());
+}
+
 export default {
   searchYoutube,
+  getVideosList,
   getVideo
 };

@@ -4,11 +4,12 @@ const fetch = require('node-fetch');
 const Video = require('../models/video');
 const Profile = require('../models/profile');
 
-const BASE_URL = 'https://www.googleapis.com/youtube/v3';
+const KEY = '&key=AIzaSyBnfyv8NMyZ1SMkQ2N_xAvLjzsQGGUi2jc';
+const BASE_URL = 'https://www.googleapis.com/youtube/v3/';
 
 module.exports = {
   video,
-  videosList,
+  getVideos,
   search
 }
 
@@ -18,9 +19,17 @@ async function video(req, res) {
 
 }
 
-// Get back video list for logged in user
-async function videosList(req, res) {
+// Get all videos in DB
+async function getVideos(req, res) {
+  let videos = await Video.find({})
 
+  const promises = videos.map(video => fetch(`${BASE_URL}videos?part=snippet&id=${video.videoId}${KEY}`)
+                            .then(res => res.json()));
+  const videosList = await Promise.all(promises);
+
+  // We've found all the videos, now we need to populate the youtube 
+
+  res.json(videosList);  
 }
 
 // Search using the req.body params 
@@ -30,14 +39,8 @@ async function search(req, res) {
   const url = `${BASE_URL}/search?part=snippet&q=${req.body.query}&key=${process.env.YOUTUBE_API_KEY}`;
   console.log(url);
   let youtubeResponse = await fetch(url).then(res => {
-    // console.log(res);
     console.log(res);
     return res;
   });
-  // console.log(res.json(youtubeResponse.result));
-  
   return res.json(youtubeResponse)
-
-  // console.log(req.body.query)
-  // res.json(req.body.query)
 }
