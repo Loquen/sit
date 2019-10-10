@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 
 import userService from '../../utils/userService';
 import dayService from '../../utils/dayService';
+import videoService from '../../utils/videoService';
 
 import NavBar from '../../components/NavBar/NavBar';
 import SignupPage from '../SignupPage/SignupPage';
@@ -30,6 +31,7 @@ class App extends Component {
       showModal: false,
       elapsedTime: 0,
       showVideoPlayer: false,
+      videoId: ''
     };
   }
 
@@ -42,8 +44,8 @@ class App extends Component {
 
   stopTimer = () => {
     this.setState(state => ({ isTiming: false }), async function(){
-      let user = userService.getUser();
-      await dayService.todayExists(user._id, this.state.elapsedTime)      
+      // let user = userService.getUser();
+      await dayService.todayExists(this.state.user._id, this.state.elapsedTime)      
     });
   }
 
@@ -65,10 +67,16 @@ class App extends Component {
   }
 
   handleTimerUpdate = () => {
-    this.setState((curState) => ({
-      remainingTime: --curState.remainingTime,
-      elapsedTime: ++curState.elapsedTime
-    }));
+    if(this.state.videoId) {
+      this.setState((curState) => ({
+        elapsedTime: ++curState.elapsedTime
+      }));
+    } else {
+      this.setState((curState) => ({
+        remainingTime: --curState.remainingTime,
+        elapsedTime: ++curState.elapsedTime
+      }));
+    }
     if(this.state.remainingTime <= 0) {
       this.stopTimer();
     }
@@ -116,13 +124,23 @@ class App extends Component {
     });
   }
 
-  setVideo = () => {
+  setVideo = async () => {
+    // let videoResults = await videoService.searchYoutube('meditation');
+    // console.log(videoResults);
+    // Get the selected video from the search modal
+    // Render the player for that video
+    
+    
     this.setState({
-      showVideoPlayer: true
+      showVideoPlayer: true,
+      videoId: 'ZFJnb_kI6FA'
     }, () => {
       this.closeModal();
-      console.log(this.state.showVideoPlayer)
+      // console.log(this.state.showVideoPlayer)
     })
+    // console.log(this.state.videoId)
+    let video = await videoService.getVideo('ZFJnb_kI6FA')
+    console.log(video);
 
   }
 
@@ -159,7 +177,9 @@ class App extends Component {
               closeModal={this.closeModal}
               setTimer={this.setTimer}
               setVideo={this.setVideo}
+              videoId={this.state.videoId}
               showSetTimeModal={this.state.showSetTimeModal}
+              stopTimer={this.stopTimer}
               handleTimerUpdate={this.handleTimerUpdate}
               handleTimer={this.handleTimer}
               handleSetTime={this.handleSetTime}

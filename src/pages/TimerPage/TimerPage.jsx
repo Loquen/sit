@@ -9,12 +9,14 @@ class TimerPage extends Component {
     return (
       <div>
         <TimerContainer 
+          stopTimer={this.props.stopTimer}
           handleTimerUpdate={this.props.handleTimerUpdate}
           remainingTime={this.props.remainingTime}
           isTiming={this.props.isTiming}
           handleTimer={this.props.handleTimer}
           resetTimer={this.props.resetTimer}
           showVideoPlayer={this.props.showVideoPlayer}
+          videoId={this.props.videoId}
         />
         <div className="option-btns">
           <button onClick={this.props.handleSetTime}>SET TIME</button>

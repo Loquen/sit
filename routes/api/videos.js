@@ -3,7 +3,9 @@ const router = express.Router();
 const videosCtrl = require('../../controllers/videos');
 
 /*---------- Public Routes ----------*/
-// router.post('/signup', videosCtrl.signup);
+router.post('/', videosCtrl.video);
+router.post('/videos', videosCtrl.videosList);
+router.post('/search', videosCtrl.search);
 // router.post('/login', videosCtrl.login);
 
 

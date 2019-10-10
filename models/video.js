@@ -1,9 +1,8 @@
 const mongoose = require('mongoose');
 
 const videoSchema = new mongoose.Schema({
-  url: String,
-  name: String,
-  duration: Number
+  videoId: String,
+  title: String,
 }, {
   timestamps: true
 });
