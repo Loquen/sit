@@ -7,11 +7,12 @@ const SetVideoModal = (props) => {
       {props.videoList.map(video => (
         <div>
           <p>{video.items[0].snippet.title}</p>
-          <img src={video.items[0].snippet.thumbnails.default.url} alt='video'/>
+          <img onClick={() => (props.setVideo(video.items[0].id))} src={video.items[0].snippet.thumbnails.default.url} alt='video'/>
         </div>
       ))}
       <footer>
-        <button onClick={props.closeModal}>CANCEL</button> <button onClick={props.setVideo}>SET</button>
+        <button onClick={props.closeModal}>CANCEL</button>
+        {/* <button onClick={props.setVideo}>SET</button> */}
       </footer>
     </div>
   );

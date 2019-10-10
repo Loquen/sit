@@ -129,7 +129,7 @@ class App extends Component {
     });
   }
 
-  setVideo = async () => {
+  setVideo = async (videoId) => {
     // let videoResults = await videoService.searchYoutube('meditation');
     // console.log(videoResults);
     // Get the selected video from the search modal
@@ -138,7 +138,7 @@ class App extends Component {
     
     this.setState({
       showVideoPlayer: true,
-      videoId: 'ZFJnb_kI6FA'
+      videoId: videoId
     }, () => {
       this.closeModal();
       // console.log(this.state.showVideoPlayer)
@@ -148,6 +148,8 @@ class App extends Component {
     // console.log(video);
 
   }
+
+  selectVideo
 
   render() {
     return (
@@ -184,6 +186,7 @@ class App extends Component {
               setVideo={this.setVideo}
               videoId={this.state.videoId}
               videoList={this.state.videoList}
+              selectVideo={this.selectVideo}
               showSetTimeModal={this.state.showSetTimeModal}
               stopTimer={this.stopTimer}
               handleTimerUpdate={this.handleTimerUpdate}
