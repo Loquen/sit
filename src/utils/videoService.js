@@ -10,7 +10,7 @@ async function searchYoutube(query){
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + tokenService.getToken()
     },
-    body: {query: query}
+    body: JSON.stringify({query: query})
   };
   return await fetch(`/api/videos/search`, options)
     .then(res => res.json());
@@ -24,7 +24,7 @@ async function getVideo(videoId){
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + tokenService.getToken()
     },
-    body: JSON.stringify(videoId)
+    body: JSON.stringify({videoId: videoId})
   };
   return await fetch(`/api/videos/video`, options)
     .then(res => res.json());
