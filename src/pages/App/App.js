@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
-// import moment from 'moment';
-
 import userService from '../../utils/userService';
 import dayService from '../../utils/dayService';
 import videoService from '../../utils/videoService';
@@ -10,6 +8,7 @@ import NavBar from '../../components/NavBar/NavBar';
 import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
 import InfoPage from '../InfoPage/InfoPage';
+import VisualizePage from '../VisualizePage/VisualizePage';
 import TimerPage from '../TimerPage/TimerPage';
 
 import './App.css';
@@ -44,7 +43,6 @@ class App extends Component {
 
   stopTimer = () => {
     this.setState(state => ({ isTiming: false }), async function(){
-      // let user = userService.getUser();
       await dayService.todayExists(this.state.user._id, this.state.elapsedTime)      
     });
   }
@@ -120,7 +118,6 @@ class App extends Component {
 
   handleSetVideo = async () => {
     let videoList = await videoService.getVideosList();
-    // console.log(videosList);
 
     this.setState({
       showModal: true,
@@ -132,20 +129,16 @@ class App extends Component {
   setVideo = async (videoId) => {
     // let videoResults = await videoService.searchYoutube('meditation');
     // console.log(videoResults);
-    // Get the selected video from the search modal
-    // Render the player for that video
-    
     
     this.setState({
       showVideoPlayer: true,
       videoId: videoId
     }, () => {
       this.closeModal();
-      // console.log(this.state.showVideoPlayer)
-    })
-    // console.log(this.state.videoId)
-    // let video = await videoService.getVideo('ZFJnb_kI6FA')
-    // console.log(video);
+    });
+
+    let video = await videoService.getVideo('ZFJnb_kI6FA')
+    console.log(video);
 
   }
 
@@ -173,6 +166,10 @@ class App extends Component {
           }/>
           <Route exact path='/' render={() => 
             <InfoPage
+            />
+          }/>
+          <Route exact path='/visualize' render={() => 
+            <VisualizePage
             />
           }/>
           <Route exact path='/timer' render={() => 

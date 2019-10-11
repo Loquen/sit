@@ -1,17 +1,32 @@
 import tokenService from './tokenService';
-const KEY = 'AIzaSyBnfyv8NMyZ1SMkQ2N_xAvLjzsQGGUi2jc';
-const BASE_URL = 'https://www.googleapis.com/youtube/v3/'
+// const KEY = process.env.REACT_APP_YOUTUBE_KEY;
+// const BASE_URL = 'https://www.googleapis.com/youtube/v3/'
 
 // Search Youtubes api for query string, return results
 async function searchYoutube(query){
-  // console.log(process.env.YOUTUBE_API_KEY)
-  return await fetch(`${BASE_URL}search?part=snippet&q=${query}&key=${KEY}`)
+  const options = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + tokenService.getToken()
+    },
+    body: {query: query}
+  };
+  return await fetch(`/api/videos/search`, options)
     .then(res => res.json());
 }
 
 // Get a single video's information based on videoId
 async function getVideo(videoId){
-  return await fetch(`${BASE_URL}videos?part=snippet&id=${videoId}&key=${KEY}`)
+  const options = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + tokenService.getToken()
+    },
+    body: JSON.stringify(videoId)
+  };
+  return await fetch(`/api/videos/video`, options)
     .then(res => res.json());
 }
 
