@@ -4,9 +4,16 @@ import Stats from '../../components/Stats/Stats';
 import dayService from '../../utils/dayService';
 
 class VisualizePage extends Component {
+  state = {
+    days: []
+  }
 
-  componentDidMount(){
-    // dayService.filterDays();
+  async componentDidMount(){
+    let days = await dayService.getAllDays(this.props.user);
+    console.log(days);
+    this.setState({
+      days: days
+    });
   }
 
   render(){

@@ -134,8 +134,8 @@ class App extends Component {
   }
 
   setVideo = async (videoId) => {
-    let videoResults = await videoService.searchYoutube('meditation');
-    console.log(videoResults);
+    // let videoResults = await videoService.searchYoutube('meditation');
+    // console.log(videoResults);
     
     this.setState({
       showVideoPlayer: true,
@@ -193,6 +193,7 @@ class App extends Component {
           }/>
           <Route exact path='/visualize' render={() => 
             <VisualizePage
+              user={this.state.user}
               filterValue={this.state.filterValue}
               filterDays={this.filterDays}
               handleFilterChange={this.handleFilterChange}

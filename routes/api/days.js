@@ -4,6 +4,7 @@ const daysCtrl = require('../../controllers/days');
 
 /*---------- Public Routes ----------*/
 router.post('/', daysCtrl.getToday);
+router.post('/all', daysCtrl.getAllDays);
 
 /*---------- Protected Routes ----------*/
 

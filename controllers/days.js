@@ -54,5 +54,5 @@ async function getToday(req, res) {
 async function getAllDays(req, res){
   Profile.findOne({user:req.body.userId})
     .populate('daysList')
-    .filter()
+    .then(profile => res.json(profile.daysList));
 }
