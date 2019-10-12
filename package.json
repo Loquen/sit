@@ -18,6 +18,7 @@
     "react-player": "^1.13.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0",
+    "recharts": "^1.7.1",
     "serve-favicon": "^2.5.0"
   },
   "scripts": {
