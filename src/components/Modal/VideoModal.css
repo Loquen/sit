@@ -1,0 +1,13 @@
+.video-container {
+  overflow-y: auto;
+  margin: 15px;
+}
+
+.video-item {
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.video-item:hover {
+  cursor: pointer;
+}

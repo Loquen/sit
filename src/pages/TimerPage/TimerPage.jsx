@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
+import { Button } from 'react-bootstrap';
+
 import TimerContainer from '../../components/TimerContainer/TimerContainer';
 import Modal from '../../components/Modal/Modal';
 import SetTimeModal from '../../components/Modal/SetTimeModal';
 import SetVideoModal from '../../components/Modal/SetVideoModal';
+
+import './TimerPage.css';
 
 class TimerPage extends Component {
   render() {
@@ -18,31 +22,32 @@ class TimerPage extends Component {
           showVideoPlayer={this.props.showVideoPlayer}
           videoId={this.props.videoId}
         />
-        <div className="option-btns">
-          <button onClick={this.props.handleSetTime}>SET TIME</button>
-          <button onClick={this.props.handleSetVideo}>CHOOSE VIDEO</button>
+        <div className='option-btns'>
+          <Button variant='secondary' onClick={this.props.handleSetTime}>SET TIME</Button>
+          &nbsp;&nbsp;&nbsp;
+          <Button variant='secondary' onClick={this.props.handleSetVideo}>CHOOSE VIDEO</Button>
         </div>
         
-          <Modal 
-            show={this.props.showModal}
-            closeModal={this.props.closeModal}
-          >
-            {this.props.showSetTimeModal ? (
-              <SetTimeModal
-                setTimer={this.props.setTimer}
-                closeModal={this.props.closeModal}
-                title="Set the Timer"
-              />
-            ) : (
-              <SetVideoModal
-                videoList={this.props.videoList}
-                setVideo={this.props.setVideo}
-                closeModal={this.props.closeModal}
-                title="Choose a Video"
-              />
-            )}
-            
-          </Modal>
+        <Modal 
+          show={this.props.showModal}
+          closeModal={this.props.closeModal}
+          modalClassName={this.props.modalClassName}
+        > 
+          {this.props.showSetTimeModal ? (
+            <SetTimeModal
+              setTimer={this.props.setTimer}
+              closeModal={this.props.closeModal}
+              title='Set the Timer'
+            />
+          ) : (
+            <SetVideoModal
+              videoList={this.props.videoList}
+              setVideo={this.props.setVideo}
+              closeModal={this.props.closeModal}
+              title='Choose a Video'
+            />
+          )}
+        </Modal> 
       </div>
     );
   }

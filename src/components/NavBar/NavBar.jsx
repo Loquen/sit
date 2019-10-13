@@ -7,17 +7,11 @@ import NavLink from 'react-bootstrap/NavLink';
 const NavBar = (props) => {
   let nav = props.user ?
       <>
-        {/* <NavLink componentClass={Link} href="/" to="/" active={location.pathname === '/'}>SIT</NavItem>
-        <NavItem componentClass={Link} href="/timer" to="/timer" active={location.pathname === '/timer'}>TIMER</NavItem>
-        <NavItem componentClass={Link} href="/visualize" to="/visualize" active={location.pathname === '/visualize'}>TIMER</NavItem>
-        <NavItem componentClass={Link} href="" to="" active={location.pathname === ''} onClick={props.handleLogout}>LOG OUT</NavItem> */}
-
-        <Nav.Link href='/timer'>T I M E R</Nav.Link>
-        <Nav.Link href='/visualize'>V I S U A L I Z E</Nav.Link>
-        <Nav.Link href='' className='justify-content-end' onClick={props.handleLogout}>L O G  O U T</Nav.Link>
+        <Nav.Link href='/timer' className='NavBar-link'>T I M E R</Nav.Link>
+        <Nav.Link href='/visualize' className='NavBar-link'>V I S U A L I Z E</Nav.Link>
+        <Nav.Link href='' className='NavBar-link' onClick={props.handleLogout}>L O G  O U T</Nav.Link>
       </>
     :
-  
       <>
         <Nav.Link href='/login' className='NavBar-link'>L O G  I N</Nav.Link>
         <Nav.Link href='/signup' className='NavBar-link'>S I G N  U P</Nav.Link>
@@ -26,9 +20,9 @@ const NavBar = (props) => {
   return (
     <Navbar bg="light" variant="light">
       <Nav> 
-      <Navbar.Brand href="#home">
+      <Navbar.Brand href="/">
         <img
-          alt=""
+          alt="Sit Logo"
           src="/sit.png"
           width="20"
           height="20"

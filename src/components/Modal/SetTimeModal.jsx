@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { Button } from 'react-bootstrap';
+import './Modal.module.css'
+
 
 class SetTimeModal extends Component {
 
@@ -29,10 +32,9 @@ class SetTimeModal extends Component {
   render() {
     return (
       <>
-        <header>{this.props.title}</header>
+        <h2>{this.props.title}</h2>
 
-        <p>Please enter a time</p>
-        Hours:<input 
+        <strong>Hours:</strong><input 
           type='number' 
           min='0'
           name='hour'
@@ -40,7 +42,7 @@ class SetTimeModal extends Component {
           value={this.state.hour}
           onChange={this.handleChange}
         />
-        Minutes:<input 
+        <strong>Minutes:</strong><input 
           type='number' 
           min='0'
           name='minute'
@@ -49,8 +51,9 @@ class SetTimeModal extends Component {
           onChange={this.handleChange}
         />
         <footer>
-          <button onClick={this.props.closeModal}>CANCEL</button> 
-          <button onClick={this.handleSubmit}>SET</button>
+          <Button variant='success' onClick={this.handleSubmit}>SET</Button>
+          &nbsp;&nbsp;&nbsp;
+          <Button variant='danger' onClick={this.props.closeModal}>CANCEL</Button> 
         </footer>
       </>
     );

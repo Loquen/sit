@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import { Container } from 'react-bootstrap';
 import Timer from '../Timer/Timer';
 import Video from '../Video/Video';
 
 class TimerContainer extends Component {
   render() {
     return (
-      <div>
+      <Container>
         {this.props.videoId
           ? <Video 
               videoId={this.props.videoId}
@@ -22,7 +23,7 @@ class TimerContainer extends Component {
               resetTimer={this.props.resetTimer}
             />
         }
-      </div>
+      </Container>
     );
   }
 }

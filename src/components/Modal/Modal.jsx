@@ -30,7 +30,7 @@ class Modal extends Component {
 
     return (
       <div className={`${styles.Modal}`} >
-        <div className={`${styles.ModalBox}`} ref={this.wrapperRef}>
+        <div className={`${styles.ModalBox} ${this.props.modalClassName}`} ref={this.wrapperRef}>
           {this.props.children}        
         </div>
       </div>

@@ -94,6 +94,8 @@ class App extends Component {
     this.setState({ user: userService.getUser() });
   }
 
+  /***********  M O D A L S ************/
+
   closeModal = () => {
     this.setState({
       showModal: false,
@@ -104,6 +106,7 @@ class App extends Component {
   handleSetTime = () => {
     this.setState({
       showModal: true,
+      modalClassName: 'timer-modal',
       showSetTimeModal: true
     });
   }
@@ -129,6 +132,7 @@ class App extends Component {
     this.setState({
       showModal: true,
       showSetTimeModal: false,
+      modalClassName: 'video-modal',
       videoList: videoList
     });
   }
@@ -205,6 +209,7 @@ class App extends Component {
               remainingTime={this.state.remainingTime}
               isTiming={this.state.isTiming}
               resetTimer={this.resetTimer}
+              modalClassName={this.state.modalClassName}
               showModal={this.state.showModal}
               closeModal={this.closeModal}
               setTimer={this.setTimer}

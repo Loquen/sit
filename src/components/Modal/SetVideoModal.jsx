@@ -1,18 +1,20 @@
 import React from 'react';
+import { Button } from 'react-bootstrap';
+import './VideoModal.css'
 
 const SetVideoModal = (props) => {
   return (
-    <div>
-      <header>{props.title}</header>
+    <div className='video-container'>
+      <h1>{props.title}</h1>
       {props.videoList.map(video => (
-        <div>
-          <p>{video.items[0].snippet.title}</p>
+        <div className='video-item'>
           <img onClick={() => (props.setVideo(video.items[0].id))} src={video.items[0].snippet.thumbnails.default.url} alt='video'/>
+          <p>{video.items[0].snippet.title}</p>
+          <hr/>
         </div>
       ))}
       <footer>
-        <button onClick={props.closeModal}>CANCEL</button>
-        {/* <button onClick={props.setVideo}>SET</button> */}
+        <Button variant='danger' onClick={props.closeModal}>CANCEL</Button>
       </footer>
     </div>
   );
