@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { Container } from 'react-bootstrap';
 import './LoginPage.css';
 import userService from '../../utils/userService';
 
@@ -34,7 +35,22 @@ class LoginPage extends Component {
   render() {
     return (
       <div className="LoginPage">
-        <header className="header-footer">Log In</header>
+        <header><h1>Log In</h1></header>
+        <Container>
+        {/* <Form>
+          <Form.Group controlId="formBasicEmail">
+            <Form.Control type="email" className="form-control" placeholder="Email" value={this.state.email} name="email" onChange={this.handleChange} />
+          </Form.Group>
+
+          <Form.Group controlId="formBasicPassword">
+            <Form.Control type="password" className="form-control" placeholder="Password" value={this.state.pw} name="pw" onChange={this.handleChange} />
+          </Form.Group>
+          <Button variant="primary" type="submit">
+            Log In
+          </Button>
+          <Link to='/'>Cancel</Link>
+        </Form> */}
+        
         <form className="form-horizontal" onSubmit={this.handleSubmit} >
           <div className="form-group">
             <div className="col-sm-12">
@@ -53,6 +69,7 @@ class LoginPage extends Component {
             </div>
           </div>
         </form>
+        </Container>
       </div>
     );
   }

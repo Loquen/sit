@@ -1,17 +1,20 @@
 import React from 'react';
+import { Button, ButtonGroup } from 'react-bootstrap';
 
 const Filter = (props) => {
   return (
     <div>
-      <button onClick={ props.handleSelector } className="Selector-btn" id="yearSelected">
-        <div id="yearSelected" className={props.yearSelected ? ("Selected") : (null)}> Year </div>
-      </button>
-      <button onClick={ props.handleSelector } className="Selector-btn" id="monthSelected">
-        <div id="monthSelected" className={props.monthSelected ? ("Selected") : (null)}> Month </div>
-      </button>
-      <button onClick={ props.handleSelector } className="Selector-btn" id="weekSelected">
-        <div id="weekSelected" className={props.weekSelected ? ("Selected") : (null)}> Week </div>
-      </button>
+      <ButtonGroup size="lg">
+        <Button variant="primary" size="lg" active onClick={ props.handleSelector } className="Selector-btn" id="yearSelected">
+          <div id="yearSelected" className={props.yearSelected ? ("Selected") : (null)}> Year </div>
+        </Button>
+        <Button variant="primary" size="lg" active onClick={ props.handleSelector } className="Selector-btn" id="monthSelected">
+          <div id="monthSelected" className={props.monthSelected ? ("Selected") : (null)}> Month </div>
+        </Button>
+        <Button variant="primary" size="lg" active onClick={ props.handleSelector } className="Selector-btn" id="weekSelected">
+          <div id="weekSelected" className={props.weekSelected ? ("Selected") : (null)}> Week </div>
+        </Button>
+      </ButtonGroup>
       {/* <form onSubmit={props.handleFilterSubmit}>
         <label>
           Filter Your Meditations:
