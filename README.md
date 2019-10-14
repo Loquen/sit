@@ -23,10 +23,11 @@ It is so easy to get caught up in the frenzy of living and forget to breath. Sit
 
 ## Screenshots:
 
-![Main Page](https://imgur.com/6gfbblv.png "Main Page")
-![Visualize Page](https://imgur.com/Iyt3lyB.png "Visualize Page")
-![All Habits Page](https://imgur.com/7cVkfSJ.png "All Habits Page")
-![Update Page](https://imgur.com/TK8YBf4.png "Update Page")
+![Info Page](https://i.imgur.com/j8iKgd1.png "Info Page")
+![Login Page](https://i.imgur.com/iKSJbR5.png "Login Page")
+![Visualize Page](https://i.imgur.com/V1xdCGJ.png "Visualize Page")
+![Timer Page](https://i.imgur.com/YzTUgMT.png "Timer Page")
+![Choose Video](https://i.imgur.com/IGGD2XY.png "Choose Video Modal")
 
 ## Technologies Used: 
   - React
