@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import userService from '../../utils/userService';
 import dayService from '../../utils/dayService';
 import videoService from '../../utils/videoService';
@@ -24,8 +24,8 @@ class App extends Component {
 
   getInitialState() {
     return {
-      remainingTime: 3,
-      userSetTime: 3,
+      remainingTime: 1,
+      userSetTime: 1,
       isTiming: false,
       showModal: false,
       elapsedTime: 0,
@@ -35,9 +35,8 @@ class App extends Component {
     };
   }
 
-  /*--- Callback Methods ---*/
-
   /********** T I M E R ************/ 
+
   startTimer = () => {
     if (this.state.remainingTime > 0) {
       this.setState({ isTiming: true });
@@ -45,6 +44,9 @@ class App extends Component {
   }
 
   stopTimer = () => {
+    // If remainingTime === 0 then play a sound.
+    if(this.state.remainingTime === 0 && !this.state.showVideoPlayer) this.playSound();
+
     this.setState(state => ({ isTiming: false }), async function(){
       await dayService.todayExists(this.state.user._id, this.state.elapsedTime)      
     });
@@ -81,6 +83,11 @@ class App extends Component {
     if(this.state.remainingTime <= 0) {
       this.stopTimer();
     }
+  }
+
+  playSound() {
+    console.log("playing sound");
+    document.getElementById('bell').play(); // Grab audio element and play it
   }
 
   /*********** L O G I N / S I G N U P *************/
@@ -138,19 +145,12 @@ class App extends Component {
   }
 
   setVideo = async (videoId) => {
-    // let videoResults = await videoService.searchYoutube('meditation');
-    // console.log(videoResults);
-    
     this.setState({
       showVideoPlayer: true,
       videoId: videoId
     }, () => {
       this.closeModal();
     });
-
-    // let video = await videoService.getVideo('ZFJnb_kI6FA')
-    // console.log(video);
-
   }
 
   /*************** V I S U A L I Z E ***************/
@@ -196,35 +196,44 @@ class App extends Component {
             />
           }/>
           <Route exact path='/visualize' render={() => 
-            <VisualizePage
-              user={this.state.user}
-              filterValue={this.state.filterValue}
-              filterDays={this.filterDays}
-              handleFilterChange={this.handleFilterChange}
-              handleFilterSubmit={this.handleFilterSubmit}
-            />
+            userService.getUser() ?           
+              <VisualizePage
+                user={this.state.user}
+                filterValue={this.state.filterValue}
+                filterDays={this.filterDays}
+                handleFilterChange={this.handleFilterChange}
+                handleFilterSubmit={this.handleFilterSubmit}
+              />
+            :
+              <Redirect to='/login' />
           }/>
           <Route exact path='/timer' render={() => 
-            <TimerPage
-              remainingTime={this.state.remainingTime}
-              isTiming={this.state.isTiming}
-              resetTimer={this.resetTimer}
-              modalClassName={this.state.modalClassName}
-              showModal={this.state.showModal}
-              closeModal={this.closeModal}
-              setTimer={this.setTimer}
-              setVideo={this.setVideo}
-              videoId={this.state.videoId}
-              videoList={this.state.videoList}
-              selectVideo={this.selectVideo}
-              showSetTimeModal={this.state.showSetTimeModal}
-              stopTimer={this.stopTimer}
-              handleTimerUpdate={this.handleTimerUpdate}
-              handleTimer={this.handleTimer}
-              handleSetTime={this.handleSetTime}
-              handleSetVideo={this.handleSetVideo}
-              showVideoPlayer={this.state.showVideoPlayer}
-            />
+            userService.getUser() ? 
+              <>
+                <TimerPage
+                  remainingTime={this.state.remainingTime}
+                  isTiming={this.state.isTiming}
+                  resetTimer={this.resetTimer}
+                  modalClassName={this.state.modalClassName}
+                  showModal={this.state.showModal}
+                  closeModal={this.closeModal}
+                  setTimer={this.setTimer}
+                  setVideo={this.setVideo}
+                  videoId={this.state.videoId}
+                  videoList={this.state.videoList}
+                  selectVideo={this.selectVideo}
+                  showSetTimeModal={this.state.showSetTimeModal}
+                  stopTimer={this.stopTimer}
+                  handleTimerUpdate={this.handleTimerUpdate}
+                  handleTimer={this.handleTimer}
+                  handleSetTime={this.handleSetTime}
+                  handleSetVideo={this.handleSetVideo}
+                  showVideoPlayer={this.state.showVideoPlayer}
+                />
+                <audio id='bell' src='singing-bowl.mp3'/>
+              </>
+            :
+              <Redirect to='/login' />
           }/>
         </Switch>
       </div>

@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  display: flex;
+  flex-direction: column;  
+  /* background-image: '/nithya-ramanujam-background-image.jpg'); */
 }
 
 .App-header {

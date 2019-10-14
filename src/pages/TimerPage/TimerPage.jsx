@@ -11,7 +11,7 @@ import './TimerPage.css';
 class TimerPage extends Component {
   render() {
     return (
-      <div>
+      <div className='timer-page-container'>
         <TimerContainer 
           stopTimer={this.props.stopTimer}
           handleTimerUpdate={this.props.handleTimerUpdate}

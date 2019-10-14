@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { Button } from 'react-bootstrap';
+import { Button, Jumbotron } from 'react-bootstrap';
+
+import '../../pages/TimerPage/TimerPage.css';
 
 function formatTime(seconds) {
   let hours = Math.floor(seconds / 3600).toString().padStart(2, '0');
@@ -29,12 +31,13 @@ class Timer extends Component {
 
   render() {
     return (
-      <div>
-        <h1>{formatTime(this.props.remainingTime)}</h1>
-          <Button size='lg' variant={this.props.isTiming ? 'danger': 'success'} onClick={this.props.handleTimer}>{this.props.isTiming ? 'STOP' : 'START'}</Button>
+      <Jumbotron >
+        <h1 className='timer'>{formatTime(this.props.remainingTime)}</h1>
+        <Button size='lg' variant={this.props.isTiming ? 'danger': 'success'} onClick={this.props.handleTimer}>{this.props.isTiming ? 'STOP' : 'START'}</Button>
         &nbsp;&nbsp;&nbsp;
         <Button variant='warning' onClick={this.props.resetTimer}>RESET</Button>
-      </div>
+        <p className='timer-tagline'>Take a breath and relax!</p>
+      </Jumbotron>
     );
   }
 }

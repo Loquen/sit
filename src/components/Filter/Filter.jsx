@@ -3,19 +3,21 @@ import { Button, ButtonGroup } from 'react-bootstrap';
 
 const Filter = (props) => {
   return (
-    <div>
-      <ButtonGroup size="lg">
-        <Button variant="primary" size="lg" active onClick={ props.handleSelector } className="Selector-btn" id="yearSelected">
-          <div id="yearSelected" className={props.yearSelected ? ("Selected") : (null)}> Year </div>
+    <>
+      <ButtonGroup size='lg'>
+        <Button variant='secondary' size='lg' active={props.yearSelected} onClick={ props.handleSelector } className='Selector-btn' id='yearSelected'>
+          Year
         </Button>
-        <Button variant="primary" size="lg" active onClick={ props.handleSelector } className="Selector-btn" id="monthSelected">
-          <div id="monthSelected" className={props.monthSelected ? ("Selected") : (null)}> Month </div>
+        <Button variant='secondary' size='lg' active={props.monthSelected} onClick={ props.handleSelector } className='Selector-btn' id='monthSelected'>
+          Month
         </Button>
-        <Button variant="primary" size="lg" active onClick={ props.handleSelector } className="Selector-btn" id="weekSelected">
-          <div id="weekSelected" className={props.weekSelected ? ("Selected") : (null)}> Week </div>
+        <Button variant='secondary' size='lg' active={props.weekSelected} onClick={ props.handleSelector } className='Selector-btn' id='weekSelected'>
+          Week
         </Button>
       </ButtonGroup>
-      {/* <form onSubmit={props.handleFilterSubmit}>
+      
+      {/* FUTURE DEV: filter specific year, month or week on selection
+      <form onSubmit={props.handleFilterSubmit}>
         <label>
           Filter Your Meditations:
           <select value={props.filterValue} onChange={props.handleFilterChange}>
@@ -26,7 +28,7 @@ const Filter = (props) => {
         </label>
         <input type="submit" value="Submit" />
       </form> */}
-    </div>
+    </>
   );
 }
 

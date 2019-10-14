@@ -1,15 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import './NavBar.css';
-import { Navbar, Nav, NavItem } from 'react-bootstrap';
-import NavLink from 'react-bootstrap/NavLink';
+import { Navbar, Nav } from 'react-bootstrap';
 
 const NavBar = (props) => {
   let nav = props.user ?
       <>
         <Nav.Link href='/timer' className='NavBar-link'>T I M E R</Nav.Link>
         <Nav.Link href='/visualize' className='NavBar-link'>V I S U A L I Z E</Nav.Link>
-        <Nav.Link href='' className='NavBar-link' onClick={props.handleLogout}>L O G  O U T</Nav.Link>
+        <Nav.Link href='' className='NavBar-link justify-content-end' onClick={props.handleLogout}>L O G  O U T</Nav.Link>
       </>
     :
       <>
@@ -20,7 +18,7 @@ const NavBar = (props) => {
   return (
     <Navbar bg="light" variant="light">
       <Nav> 
-      <Navbar.Brand href="/">
+      <Navbar.Brand href="/" className='NavBar-link'>
         <img
           alt="Sit Logo"
           src="/sit.png"

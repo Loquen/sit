@@ -23,6 +23,7 @@ class Video extends Component {
       <div>
         <ReactPlayer 
           url={`https://www.youtube.com/watch?v=${this.props.videoId}`}
+          width='100%'
           onPlay={this.props.handleTimer}
           onPause={this.props.handleTimer}
           onEnded={this.props.stopTimer}

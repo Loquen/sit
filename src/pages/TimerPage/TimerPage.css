@@ -1,3 +1,16 @@
 .option-btns {
   margin: 10px;
 }
+
+.timer-page-container {
+  align-self: center;
+  width: 80%;  
+}
+
+.timer {
+  font-size: 10vmin;
+}
+
+.timer-tagline {
+  margin: 20px;
+}
