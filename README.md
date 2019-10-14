@@ -1,68 +1,57 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Sit
+It is so easy to get caught up in the frenzy of living and forget to breath. Sit is a website meant to help you keep track of your meditation practices and increase the mindfulness with which you live you life.   
 
-## Available Scripts
+## There are many styles of meditation: 
+ - Mindfulness
+ - Mantra
+ - Movement (Yoga, Tai Chi, Qi Gong)
+ - Transcendental
+ - Loving kindness
 
-In the project directory, you can run:
+ and many more...
 
-### `npm start`
+### At the base these all focus on awareness:
+ To get started take some deep breaths and settle into a comfortable spot. You don't need to cross your legs unless you want to. Just begin to observe your breath and feel the sensations in your body. If you want some guidence tryout one of the videos!
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Benefits of meditation: 
+  1. Stress reduction
+  2. Control anxiety
+  3. Improved emotional health
+  4. Enhanced self-awareness
+  5. Increased focus
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
 
-### `npm test`
+## Screenshots:
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![Main Page](https://imgur.com/6gfbblv.png "Main Page")
+![Visualize Page](https://imgur.com/Iyt3lyB.png "Visualize Page")
+![All Habits Page](https://imgur.com/7cVkfSJ.png "All Habits Page")
+![Update Page](https://imgur.com/TK8YBf4.png "Update Page")
 
-### `npm run build`
+## Technologies Used: 
+  - React
+  - JavaScript 
+  - JSX
+  - CSS
+  - MongoDB
+  - Mongoose
+  - Express
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## NPM Packages Used: 
+  - bcrypt (Auth)
+  - react-player (Youtube Player)
+  - react-bootstrap (Styling)
+  - recharts (Visualization)
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## Getting Started: How to Use
+  - [Start Meditating](https://sit-lrj.herokuapp.com/)
+  - Sign up for a new account
+  - Use the timer or choose a video
+  - Visualize your progress 
+  - Breath!
+  
+## Next Steps: Planned future enhancements (icebox items):
+  - Deeper statistics
+  - Ability to see month and week charts
+  - Ability to search youtube for videos to add to a users account
+  - Quality of meditation session tracking
