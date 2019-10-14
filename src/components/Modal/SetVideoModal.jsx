@@ -7,7 +7,7 @@ const SetVideoModal = (props) => {
     <div className='video-container'>
       <h1>{props.title}</h1>
       {props.videoList.map(video => (
-        <div className='video-item'>
+        <div key={video.items[0].title} className='video-item'>
           <img onClick={() => (props.setVideo(video.items[0].id))} src={video.items[0].snippet.thumbnails.default.url} alt='video'/>
           <p>{video.items[0].snippet.title}</p>
           <hr/>

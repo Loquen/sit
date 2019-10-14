@@ -2,7 +2,7 @@ import React, { Component }from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
 import moment from 'moment';
 import Filter from '../../components/Filter/Filter';
-import Stats from '../../components/Stats/Stats';
+import Stats from '../../components/Stats/Stats'; // FUTURE DEV
 import dayService from '../../utils/dayService';
 
 import './VisualizePage.css';
@@ -100,7 +100,7 @@ class VisualizePage extends Component {
           </BarChart>
         ) : null }
         
-        {/* 
+        {/* FUTURE DEV
         <Stats /> 
         */}        
       </div>

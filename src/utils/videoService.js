@@ -1,6 +1,4 @@
 import tokenService from './tokenService';
-// const KEY = process.env.REACT_APP_YOUTUBE_KEY;
-// const BASE_URL = 'https://www.googleapis.com/youtube/v3/'
 
 // Search Youtubes api for query string, return results
 async function searchYoutube(query){

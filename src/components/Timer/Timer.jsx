@@ -19,7 +19,7 @@ class Timer extends Component {
     this.props.handleTimerUpdate();
   };
 
-  /*--- Lifecycle Methods ---*/
+  /********* L I F E C Y C L E *********/
 
   componentDidMount() {
     this.timerId = setInterval(this.handleTick, 1000);

@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
 import './Modal.module.css'
 
-
 class SetTimeModal extends Component {
-
   state = {
     hour: 0,
     minute: 10,
@@ -33,7 +31,6 @@ class SetTimeModal extends Component {
     return (
       <>
         <h2>{this.props.title}</h2>
-
         <strong>Hours:</strong><input 
           type='number' 
           min='0'

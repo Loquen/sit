@@ -15,7 +15,6 @@ function todayExists(userId, elapsedTime){
       elapsedTime
     })
 
-    
   };
   return fetch(BASE_URL, options).then(res => {
     return res.json()
@@ -32,9 +31,8 @@ function getAllDays(userId) {
     ,
     body: JSON.stringify({
       userId
-    })
+    }) 
 
-    
   };
   return fetch(`${BASE_URL}all`, options).then(res => {
     return res.json()

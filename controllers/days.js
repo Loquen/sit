@@ -2,7 +2,6 @@ const Day = require('../models/day');
 const Profile = require('../models/profile');
 var moment = require('moment');
 
-
 module.exports = {
   getToday,
   getAllDays
@@ -20,7 +19,6 @@ async function getToday(req, res) {
     .then(prof => {
       let latestDay =  prof.daysList[prof.daysList.length - 1];
       if(latestDay && latestDay.date.day === today.day && latestDay.date.month === today.month && latestDay.date.year === today.year){
-        console.log('update: ', latestDay.id)
         // latestDay is today, find that day and update with elapsedTime
         let session = {
           duration: req.body.elapsedTime,
@@ -42,7 +40,6 @@ async function getToday(req, res) {
           }]
         })
         day.save((err, day) => {
-          console.log('create: ', day._id);
           prof.daysList.push(day._id)
           prof.save()
         })

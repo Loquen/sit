@@ -16,15 +16,15 @@ const NavBar = (props) => {
       </>
 
   return (
-    <Navbar bg="light" variant="light">
+    <Navbar bg='light' variant='light'>
       <Nav activeKey={props.location.pathname} > 
-      <Navbar.Brand href="/" className='NavBar-link'>
+      <Navbar.Brand href='/' className='NavBar-link'>
         <img
-          alt="Sit Logo"
-          src="/sit.png"
-          width="20"
-          height="20"
-          className="d-inline-block align-top"
+          alt='Sit Logo'
+          src='/sit.png'
+          width='20'
+          height='20'
+          className='d-inline-block align-top'
         />&nbsp;&nbsp;
         {'S I T'}
       </Navbar.Brand>

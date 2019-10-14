@@ -5,13 +5,34 @@ const Filter = (props) => {
   return (
     <>
       <ButtonGroup size='lg'>
-        <Button variant='secondary' size='lg' active={props.yearSelected} onClick={ props.handleSelector } className='Selector-btn' id='yearSelected'>
+        <Button 
+          variant='secondary' 
+          size='lg' 
+          active={props.yearSelected} 
+          onClick={ props.handleSelector } 
+          className='Selector-btn' 
+          id='yearSelected'
+        >
           Year
         </Button>
-        <Button variant='secondary' size='lg' active={props.monthSelected} onClick={ props.handleSelector } className='Selector-btn' id='monthSelected'>
+        <Button 
+          variant='secondary' 
+          size='lg' 
+          active={props.monthSelected} 
+          onClick={ props.handleSelector } 
+          className='Selector-btn' 
+          id='monthSelected'
+        >
           Month
         </Button>
-        <Button variant='secondary' size='lg' active={props.weekSelected} onClick={ props.handleSelector } className='Selector-btn' id='weekSelected'>
+        <Button 
+          variant='secondary' 
+          size='lg' 
+          active={props.weekSelected} 
+          onClick={ props.handleSelector } 
+          className='Selector-btn' 
+          id='weekSelected'
+        >
           Week
         </Button>
       </ButtonGroup>

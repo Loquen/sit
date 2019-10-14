@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
-import './LoginPage.css';
 import userService from '../../utils/userService';
 
 class LoginPage extends Component {
@@ -13,7 +12,6 @@ class LoginPage extends Component {
 
   handleChange = (e) => {
     this.setState({
-      // Using ES2015 Computed Property Names
       [e.target.name]: e.target.value
     });
   }
@@ -36,39 +34,25 @@ class LoginPage extends Component {
     return (
       <div className="LoginPage">
         <header><h1>Log In</h1></header>
-        <Container>
-        {/* <Form>
-          <Form.Group controlId="formBasicEmail">
-            <Form.Control type="email" className="form-control" placeholder="Email" value={this.state.email} name="email" onChange={this.handleChange} />
-          </Form.Group>
-
-          <Form.Group controlId="formBasicPassword">
-            <Form.Control type="password" className="form-control" placeholder="Password" value={this.state.pw} name="pw" onChange={this.handleChange} />
-          </Form.Group>
-          <Button variant="primary" type="submit">
-            Log In
-          </Button>
-          <Link to='/'>Cancel</Link>
-        </Form> */}
-        
-        <form className="form-horizontal" onSubmit={this.handleSubmit} >
-          <div className="form-group">
-            <div className="col-sm-12">
-              <input type="email" className="form-control" placeholder="Email" value={this.state.email} name="email" onChange={this.handleChange} />
+        <Container>        
+          <form className="form-horizontal" onSubmit={this.handleSubmit} >
+            <div className="form-group">
+              <div className="col-sm-12">
+                <input type="email" className="form-control" placeholder="Email" value={this.state.email} name="email" onChange={this.handleChange} />
+              </div>
             </div>
-          </div>
-          <div className="form-group">
-            <div className="col-sm-12">
-              <input type="password" className="form-control" placeholder="Password" value={this.state.pw} name="pw" onChange={this.handleChange} />
+            <div className="form-group">
+              <div className="col-sm-12">
+                <input type="password" className="form-control" placeholder="Password" value={this.state.pw} name="pw" onChange={this.handleChange} />
+              </div>
             </div>
-          </div>
-          <div className="form-group">
-            <div className="col-sm-12 text-center">
-              <button className="btn btn-default">Log In</button>&nbsp;&nbsp;&nbsp;
-              <Link to='/'>Cancel</Link>
+            <div className="form-group">
+              <div className="col-sm-12 text-center">
+                <button className="btn btn-default">Log In</button>&nbsp;&nbsp;&nbsp;
+                <Link to='/'>Cancel</Link>
+              </div>
             </div>
-          </div>
-        </form>
+          </form>
         </Container>
       </div>
     );

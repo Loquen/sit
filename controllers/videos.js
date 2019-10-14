@@ -1,9 +1,5 @@
 const fetch = require('node-fetch');
-
 const Video = require('../models/video');
-const Profile = require('../models/profile');
-
-// const KEY = '&key=AIzaSyBnfyv8NMyZ1SMkQ2N_xAvLjzsQGGUi2jc';
 const BASE_URL = 'https://www.googleapis.com/youtube/v3/';
 
 module.exports = {

@@ -44,7 +44,6 @@ class App extends Component {
   }
 
   stopTimer = () => {
-    // If remainingTime === 0 then play a sound.
     if(this.state.remainingTime === 0 && !this.state.showVideoPlayer) this.playSound();
 
     this.setState(state => ({ isTiming: false }), async function(){
@@ -86,7 +85,7 @@ class App extends Component {
   }
 
   playSound() {
-    console.log("playing sound");
+    console.log('playing sound');
     document.getElementById('bell').play(); // Grab audio element and play it
   }
 
@@ -161,19 +160,13 @@ class App extends Component {
 
   handleFilterSubmit = (evt) => {
     evt.preventDefault();
-    console.log('Filter By: ' + this.state.filterValue);
 
-    // Now that we have the value that the user selects we can then pass it into
-    // a service to lookup all the days with that year. 
-  }
-
-  filterDays = () => {
-
+    /******* FUTURE DEV: filter by specific year, month or week ********/
   }
 
   render() {
     return (
-      <div className="App">
+      <div className='App'>
         <NavBar 
           location={window.location.pathname}
           user={this.state.user}
