@@ -5,6 +5,7 @@ import TimerContainer from '../../components/TimerContainer/TimerContainer';
 import Modal from '../../components/Modal/Modal';
 import SetTimeModal from '../../components/Modal/SetTimeModal';
 import SetVideoModal from '../../components/Modal/SetVideoModal';
+import RatingModal from '../../components/Modal/RatingModal';
 
 import './TimerPage.css';
 
@@ -33,20 +34,26 @@ class TimerPage extends Component {
           closeModal={this.props.closeModal}
           modalClassName={this.props.modalClassName}
         > 
-          {this.props.showSetTimeModal ? (
-            <SetTimeModal
-              setTimer={this.props.setTimer}
-              closeModal={this.props.closeModal}
-              title='Set the Timer'
-            />
-          ) : (
-            <SetVideoModal
-              videoList={this.props.videoList}
-              setVideo={this.props.setVideo}
-              closeModal={this.props.closeModal}
-              title='Choose a Video'
-            />
-          )}
+        {this.props.showRateModal ? (
+          <RatingModal
+            handleSubmit={this.props.handleRatingSubmit}
+            closeModal={this.props.closeModal}
+            title='How was your session?'
+          />
+        ) : this.props.showSetTimeModal ? (
+          <SetTimeModal
+            setTimer={this.props.setTimer}
+            closeModal={this.props.closeModal}
+            title='Set the Timer'
+          />
+        ) : (
+          <SetVideoModal
+            videoList={this.props.videoList}
+            setVideo={this.props.setVideo}
+            closeModal={this.props.closeModal}
+            title='Choose a Video'
+          />
+        )}
         </Modal> 
       </div>
     );

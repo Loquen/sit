@@ -24,10 +24,11 @@ class App extends Component {
 
   getInitialState() {
     return {
-      remainingTime: 600,
-      userSetTime: 600,
+      remainingTime: 10,
+      userSetTime: 10,
       isTiming: false,
       showModal: false,
+      showRateModal: false,
       elapsedTime: 0,
       showVideoPlayer: false,
       videoId: '',
@@ -47,7 +48,11 @@ class App extends Component {
     // If remainingTime === 0 then play a sound.
     if(this.state.remainingTime === 0 && !this.state.showVideoPlayer) this.playSound();
 
-    this.setState(state => ({ isTiming: false }), async function(){
+    this.setState(state => ({ 
+      isTiming: false,
+      showModal: true,
+      showRateModal: true
+    }), async function(){
       await dayService.todayExists(this.state.user._id, this.state.elapsedTime)      
     });
   }
@@ -129,6 +134,10 @@ class App extends Component {
       showVideoPlayer: false,
       videoId: ''
     }))
+  }
+
+  handleRatingSubmit = () => {
+    console.log('success');
   }
 
   /*********** V I D E O S **************/
@@ -230,6 +239,8 @@ class App extends Component {
                   handleSetTime={this.handleSetTime}
                   handleSetVideo={this.handleSetVideo}
                   showVideoPlayer={this.state.showVideoPlayer}
+                  handleRatingSubmit={this.handleRatingSubmit}
+                  showRateModal={this.state.showRateModal}
                 />
                 <audio id='bell' src='singing-bowl.mp3'/>
               </>
