@@ -2,7 +2,7 @@ import tokenService from './tokenService';
 
 const BASE_URL = '/api/days/';
 
-function todayExists(userId, elapsedTime){
+function todayExists(userId, elapsedTime, thoughts, rating){
   const options = {
     method: 'POST',
     headers: {
@@ -12,11 +12,12 @@ function todayExists(userId, elapsedTime){
     ,
     body: JSON.stringify({
       userId,
-      elapsedTime
+      elapsedTime,
+      thoughts, 
+      rating
     })
-
-    
   };
+
   return fetch(BASE_URL, options).then(res => {
     return res.json()
   });

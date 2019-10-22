@@ -52,9 +52,7 @@ class App extends Component {
       isTiming: false,
       showModal: true,
       showRateModal: true
-    }), async function(){
-      await dayService.todayExists(this.state.user._id, this.state.elapsedTime)      
-    });
+    }));
   }
 
   handleTimer = () => {
@@ -91,7 +89,7 @@ class App extends Component {
   }
 
   playSound() {
-    console.log("playing sound");
+    // console.log("playing sound");
     document.getElementById('bell').play(); // Grab audio element and play it
   }
 
@@ -136,8 +134,13 @@ class App extends Component {
     }))
   }
 
-  handleRatingSubmit = () => {
-    console.log('success');
+  handleRatingSubmit = async (rating, thoughts) => {
+    console.log(rating, thoughts);
+
+    await dayService.todayExists(this.state.user._id, this.state.elapsedTime, thoughts, rating);      
+    // now that we have the state up in app level from the users form submission
+    // We need to save it to the user's profile.
+    // Return the rating and thoughts from to our stop timer function
   }
 
   /*********** V I D E O S **************/

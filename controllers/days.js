@@ -20,12 +20,14 @@ async function getToday(req, res) {
     .then(prof => {
       let latestDay =  prof.daysList[prof.daysList.length - 1];
       if(latestDay && latestDay.date.day === today.day && latestDay.date.month === today.month && latestDay.date.year === today.year){
-        console.log('update: ', latestDay.id)
         // latestDay is today, find that day and update with elapsedTime
         let session = {
           duration: req.body.elapsedTime,
-          video: req.body.videoId || null
+          video: req.body.videoId || null,
+          thoughts: req.body.thoughts,
+          rating: parseInt(req.body.rating)
         }
+        console.log(session);
         Day.findById(latestDay.id)
           .then(day => {
             day.totalTime += req.body.elapsedTime;
@@ -38,11 +40,12 @@ async function getToday(req, res) {
           totalTime: req.body.elapsedTime,
           sessions: [{
             duration: req.body.elapsedTime,
-            video: req.body.videoId || null
+            video: req.body.videoId || null,
+            thoughts: req.body.thoughts,
+            rating: parseInt(req.body.rating)
           }]
         })
         day.save((err, day) => {
-          console.log('create: ', day._id);
           prof.daysList.push(day._id)
           prof.save()
         })

@@ -6,21 +6,14 @@ import './Modal.module.css'
 class RatingModal extends Component {
 
   state = {
-    thoughts: 'How do you feel? What came up?',
+    thoughts: 'How do you feel?',
     rating: 5,
   };
 
   handleChange = (evt) => {
-    if(evt.target.value >= 0){
-      this.setState({
-        [evt.target.name]: evt.target.value
-      });
-    }
-  }
-
-  handleSubmit = (evt) => {
-    evt.preventDefault();
-    console.log('success');
+    this.setState({
+      [evt.target.name]: evt.target.value
+    });
   }
 
   render() {
@@ -44,7 +37,7 @@ class RatingModal extends Component {
           onChange={this.handleChange}
         />
         <footer>
-          <Button variant='success' onClick={this.handleSubmit}>FINISH SESSION</Button>
+          <Button variant='success' onClick={() => this.props.handleSubmit(this.state.rating, this.state.thoughts)}>FINISH SESSION</Button>
           &nbsp;&nbsp;&nbsp;
           <Button variant='danger' onClick={this.props.closeModal}>CANCEL</Button> 
         </footer>
