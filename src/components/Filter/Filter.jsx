@@ -12,7 +12,7 @@ const Filter = (props) => {
           Month
         </Button>
         <Button variant='secondary' size='lg' active={props.weekSelected} onClick={ props.handleSelector } className='Selector-btn' id='weekSelected'>
-          Week
+          Last 7 Days
         </Button>
       </ButtonGroup>
       

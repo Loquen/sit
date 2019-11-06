@@ -20,14 +20,17 @@ class VisualizePage extends Component {
   async componentDidMount(){
     let days = await dayService.getAllDays(this.props.user);
 
+    days.reverse();
     // We need to parse the data through a helper function
     let yearData = this.populateYearData(days);
     let monthData = this.populateMonthData(days);
+    let weekData = this.populateWeekData(days);
 
     this.setState({
       days: days,
       yearData: yearData,
-      monthData: monthData
+      monthData: monthData,
+      weekData: weekData
     }, () => console.log(this.state.monthData));
   }
 
@@ -117,20 +120,15 @@ class VisualizePage extends Component {
 
     daysList.forEach(day => {
       if(day.date.month === today.month){
-        monthData[day.date.day].totalTime += day.totalTime
+        monthData[day.date.day - 1].totalTime += day.totalTime
       }
     });
       
     return monthData;
   }
 
-  populateWeekData(daysList) {
-    let today = {
-      year: moment().year(), 
-      month: moment().month(),
-      day: moment().date()
-    };
-    let monthData = [
+  populateWeekData(daysList) {   
+    let weekData = [
       { date: 1, totalTime: 0 },
       { date: 2, totalTime: 0 },
       { date: 3, totalTime: 0 },
@@ -140,13 +138,14 @@ class VisualizePage extends Component {
       { date: 7, totalTime: 0 },
     ]
 
-    daysList.forEach(day => {
-      if(day.date.month === today.month){
-        monthData[day.date.day].totalTime += day.totalTime
+    daysList.forEach((day, i) => {
+      if(i < 7){
+        weekData[i].totalTime = day.totalTime;
+        weekData[i].date = `${moment().month(day.date.month - 1).format('MMM')} ${day.date.day}`;
       }
     });
-      
-    return monthData;
+
+    return weekData;
   }
 
   render(){
@@ -189,7 +188,20 @@ class VisualizePage extends Component {
             <Bar dataKey='totalTime' fill='#8884d8' />
           </BarChart>
         ) : null }
-        
+        { this.state.weekSelected ? ( 
+          <BarChart
+            width={500}
+            height={300}
+            data={this.state.weekData}
+            margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+          >
+            <CartesianGrid strokeDasharray='3 3' />
+            <XAxis dataKey='date' />
+            <YAxis />
+            <Tooltip />
+            <Bar dataKey='totalTime' fill='#8884d8' />
+          </BarChart>
+        ) : null }
         {/* 
         <Stats /> 
         */}        
