@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
+import RenderStars from './RenderStars';
 import './Modal.module.css'
 
 
@@ -14,6 +15,13 @@ class RatingModal extends Component {
     this.setState({
       [evt.target.name]: evt.target.value
     });
+  }
+
+  rateSession = (evt) => {
+    console.log(evt.target.id);
+    this.setState((curState) => ({
+      rating: evt.target.id
+    }))
   }
 
   render() {
@@ -35,6 +43,10 @@ class RatingModal extends Component {
           step='1'
           value={this.state.rating}
           onChange={this.handleChange}
+        />
+        <RenderStars 
+          rating={this.state.rating}
+          rateSession={this.rateSession}
         />
         <footer>
           <Button variant='success' onClick={() => this.props.handleSubmit(this.state.rating, this.state.thoughts)}>FINISH SESSION</Button>

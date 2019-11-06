@@ -138,9 +138,6 @@ class App extends Component {
     console.log(rating, thoughts);
 
     await dayService.todayExists(this.state.user._id, this.state.elapsedTime, thoughts, rating);      
-    // now that we have the state up in app level from the users form submission
-    // We need to save it to the user's profile.
-    // Return the rating and thoughts from to our stop timer function
   }
 
   /*********** V I D E O S **************/
