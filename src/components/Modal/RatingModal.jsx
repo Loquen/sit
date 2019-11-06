@@ -35,15 +35,7 @@ class RatingModal extends Component {
           value={this.state.thoughts}
           onChange={this.handleChange}
         />
-        <strong>Rating:</strong><input 
-          type='number' 
-          min='0'
-          max='5'
-          name='rating'
-          step='1'
-          value={this.state.rating}
-          onChange={this.handleChange}
-        />
+        
         <RenderStars 
           rating={this.state.rating}
           rateSession={this.rateSession}

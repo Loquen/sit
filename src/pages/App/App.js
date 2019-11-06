@@ -109,7 +109,8 @@ class App extends Component {
   closeModal = () => {
     this.setState({
       showModal: false,
-      showSetTimeModal: false
+      showSetTimeModal: false,
+      showRateModal: false
     });
   }
 
@@ -135,9 +136,9 @@ class App extends Component {
   }
 
   handleRatingSubmit = async (rating, thoughts) => {
-    console.log(rating, thoughts);
-
-    await dayService.todayExists(this.state.user._id, this.state.elapsedTime, thoughts, rating);      
+    await dayService.todayExists(this.state.user._id, this.state.elapsedTime, thoughts, rating);   
+    
+    this.closeModal();
   }
 
   /*********** V I D E O S **************/
