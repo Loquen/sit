@@ -22,8 +22,11 @@ async function getToday(req, res) {
         // latestDay is today, find that day and update with elapsedTime
         let session = {
           duration: req.body.elapsedTime,
-          video: req.body.videoId || null
+          video: req.body.videoId || null,
+          thoughts: req.body.thoughts,
+          rating: parseInt(req.body.rating)
         }
+        console.log(session);
         Day.findById(latestDay.id)
           .then(day => {
             day.totalTime += req.body.elapsedTime;
@@ -36,7 +39,9 @@ async function getToday(req, res) {
           totalTime: req.body.elapsedTime,
           sessions: [{
             duration: req.body.elapsedTime,
-            video: req.body.videoId || null
+            video: req.body.videoId || null,
+            thoughts: req.body.thoughts,
+            rating: parseInt(req.body.rating)
           }]
         })
         day.save((err, day) => {

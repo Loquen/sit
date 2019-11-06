@@ -25,15 +25,8 @@ const Filter = (props) => {
         >
           Month
         </Button>
-        <Button 
-          variant='secondary' 
-          size='lg' 
-          active={props.weekSelected} 
-          onClick={ props.handleSelector } 
-          className='Selector-btn' 
-          id='weekSelected'
-        >
-          Week
+        <Button variant='secondary' size='lg' active={props.weekSelected} onClick={ props.handleSelector } className='Selector-btn' id='weekSelected'>
+          Last 7 Days
         </Button>
       </ButtonGroup>
       

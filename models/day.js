@@ -13,7 +13,9 @@ const daySchema = new mongoose.Schema({
     video: {
       type: Schema.Types.ObjectId,
       ref: 'Video'
-    }
+    },
+    rating: Number,
+    thoughts: String
   }]
 }, {
   timestamps: true
