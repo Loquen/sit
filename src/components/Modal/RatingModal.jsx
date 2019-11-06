@@ -18,9 +18,9 @@ class RatingModal extends Component {
   }
 
   rateSession = (evt) => {
-    console.log(evt.target.id);
+    let rating = evt.target.id;
     this.setState((curState) => ({
-      rating: evt.target.id
+      rating: rating
     }))
   }
 
