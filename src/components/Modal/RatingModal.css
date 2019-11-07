@@ -1,0 +1,13 @@
+.rating-body {
+  padding: 10px;
+  margin: 20px;
+}
+
+.rating-input {
+  font-weight: bold;
+  margin: 15px;
+}
+
+.rating-stars {
+  margin: 20px;
+}

@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
 import RenderStars from './RenderStars';
-import './Modal.module.css'
+import './RatingModal.css'
 
 
 class RatingModal extends Component {
 
   state = {
-    thoughts: 'How do you feel?',
+    thoughts: '',
     rating: 5,
   };
 
@@ -26,26 +26,29 @@ class RatingModal extends Component {
 
   render() {
     return (
-      <>
+      <div className='rating-body'>
         <h2>{this.props.title}</h2>
-
-        <strong>Thoughts:</strong><input 
-          type='text' 
-          name='thoughts'
-          value={this.state.thoughts}
-          onChange={this.handleChange}
-        />
-        
-        <RenderStars 
-          rating={this.state.rating}
-          rateSession={this.rateSession}
-        />
+        <div className='rating-input'>
+          <strong>Thoughts: &nbsp;&nbsp;</strong><input 
+            type='text' 
+            name='thoughts'
+            placeholder='How do you feel?'
+            value={this.state.thoughts}
+            onChange={this.handleChange}
+          />
+        </div>
+        <div className='rating-stars'>
+          <RenderStars 
+            rating={this.state.rating}
+            rateSession={this.rateSession}
+          />
+        </div>
         <footer>
-          <Button variant='success' onClick={() => this.props.handleSubmit(this.state.rating, this.state.thoughts)}>FINISH SESSION</Button>
+          <Button variant='success' size='lg' onClick={() => this.props.handleSubmit(this.state.rating, this.state.thoughts)}>FINISH SESSION</Button>
           &nbsp;&nbsp;&nbsp;
           <Button variant='danger' onClick={this.props.closeModal}>CANCEL</Button> 
         </footer>
-      </>
+      </div>
     );
   }
 }

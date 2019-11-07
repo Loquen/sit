@@ -24,8 +24,8 @@ class App extends Component {
 
   getInitialState() {
     return {
-      remainingTime: 10,
-      userSetTime: 10,
+      remainingTime: 1,
+      userSetTime: 1,
       isTiming: false,
       showModal: false,
       showRateModal: false,
