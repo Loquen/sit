@@ -176,7 +176,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className='App'>
+      <div className='App' id='app'>
         <NavBar 
           location={window.location.pathname}
           user={this.state.user}

@@ -14,3 +14,7 @@
 .timer-tagline {
   margin: 20px;
 }
+
+#app.btn {
+  font-size: 1.5rem;
+}

@@ -16,7 +16,7 @@ const NavBar = (props) => {
       </>
 
   return (
-    <Navbar bg='light' variant='light'>
+    <Navbar className='nav' bg='light' variant='light'>
       <Nav activeKey={props.location.pathname} > 
       <Navbar.Brand href='/' className='NavBar-link'>
         <img
@@ -24,7 +24,7 @@ const NavBar = (props) => {
           src='/sit.png'
           width='20'
           height='20'
-          className='d-inline-block align-top'
+          className='d-inline-block align-center'
         />&nbsp;&nbsp;
         {'S I T'}
       </Navbar.Brand>

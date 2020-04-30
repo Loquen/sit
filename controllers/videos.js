@@ -27,5 +27,8 @@ async function getVideos(req, res) {
 // Search using the req.body params dotenv
 async function search(req, res) {
   const url = `${BASE_URL}search?part=snippet&q=${req.body.query}&key=${process.env.YOUTUBE_KEY}`;
+  
+  console.log(url);
+  
   return res.json(await fetch(url).then(res => res.json()));
 }
