@@ -48,6 +48,8 @@ class TimerPage extends Component {
           />
         ) : (
           <SetVideoModal
+            handleVideoChange={this.props.handleVideoChange}
+            handleVideoSearch={this.props.handleVideoSearch}
             videoList={this.props.videoList}
             setVideo={this.props.setVideo}
             closeModal={this.props.closeModal}

@@ -153,6 +153,14 @@ class App extends Component {
     });
   }
 
+  handleVideoChange = (e) => {
+
+  }
+
+  handleVideoSearch = (e) => {
+
+  }
+
   setVideo = async (videoId) => {
     this.setState({
       showVideoPlayer: true,
@@ -232,6 +240,8 @@ class App extends Component {
                   handleTimer={this.handleTimer}
                   handleSetTime={this.handleSetTime}
                   handleSetVideo={this.handleSetVideo}
+                  handleVideoChange={this.handleVideoChange}
+                  handleVideoSearch={this.handleVideoSearch}
                   showVideoPlayer={this.state.showVideoPlayer}
                   handleRatingSubmit={this.handleRatingSubmit}
                   showRateModal={this.state.showRateModal}
