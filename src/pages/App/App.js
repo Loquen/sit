@@ -32,6 +32,8 @@ class App extends Component {
       elapsedTime: 0,
       showVideoPlayer: false,
       videoId: '',
+      videoQuery: '',
+      userSearch: false,
       filterValue: 'year'
     };
   }
@@ -154,11 +156,20 @@ class App extends Component {
   }
 
   handleVideoChange = (e) => {
-
+    this.setState({
+      videoQuery: e.target.value
+    });
   }
 
-  handleVideoSearch = (e) => {
+  handleVideoSearch = async (e) => {
+    
+    let videoList = await videoService.searchYoutube(this.state.videoQuery);
+    console.log(videoList.items);
 
+    this.setState({
+      videoList: videoList.items,
+      userSearch: true
+    })
   }
 
   setVideo = async (videoId) => {
@@ -233,6 +244,7 @@ class App extends Component {
                   setVideo={this.setVideo}
                   videoId={this.state.videoId}
                   videoList={this.state.videoList}
+                  userSearch={this.state.userSearch}
                   selectVideo={this.selectVideo}
                   showSetTimeModal={this.state.showSetTimeModal}
                   stopTimer={this.stopTimer}

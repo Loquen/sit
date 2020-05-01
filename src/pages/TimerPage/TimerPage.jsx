@@ -51,6 +51,7 @@ class TimerPage extends Component {
             handleVideoChange={this.props.handleVideoChange}
             handleVideoSearch={this.props.handleVideoSearch}
             videoList={this.props.videoList}
+            userSearch={this.props.userSearch}
             setVideo={this.props.setVideo}
             closeModal={this.props.closeModal}
             title='Choose a Video'
