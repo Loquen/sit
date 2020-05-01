@@ -150,6 +150,7 @@ class App extends Component {
     this.setState({
       showModal: true,
       showSetTimeModal: false,
+      userSearch: false,
       modalClassName: 'video-modal',
       videoList: videoList
     });
