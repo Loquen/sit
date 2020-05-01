@@ -27,7 +27,7 @@ const SetVideoModal = (props) => {
             <img 
               onClick={() => (
                 props.setVideo(
-                  props.userSearch ? video.id
+                  props.userSearch ? video.id.videoId
                   : video.items[0].id))} 
               src={
                 props.userSearch ? video.snippet.thumbnails.default.url
