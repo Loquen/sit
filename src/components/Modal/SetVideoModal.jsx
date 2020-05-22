@@ -3,7 +3,6 @@ import { Button } from 'react-bootstrap';
 import './VideoModal.css'
 
 const SetVideoModal = (props) => {
-  console.log('VIDEO SEARCH', props.videoList[0]);
 
   return (
     <div className='video-container'>
@@ -13,32 +12,37 @@ const SetVideoModal = (props) => {
         type='text' 
         placeholder='Search'
         value={props.videoQuery}
+        className='mr-3'
       />
       <Button 
+        className='mb-3'
         variant='success' 
         onClick={props.handleVideoSearch}
       >
         SEARCH
       </Button>
       {
+
         props.videoList ? 
           props.videoList.map((video, id)=> (
-          <div key={id} className='video-item'>
-            <img 
-              onClick={() => (
-                props.setVideo(
-                  props.userSearch ? video.id.videoId
-                  : video.items[0].id))} 
-              src={
-                props.userSearch ? video.snippet.thumbnails.default.url
-                : video.items[0].snippet.thumbnails.default.url} 
-              alt='video'
-            />
-            <p>{props.userSearch 
-              ? video.snippet.title
-              : video.items[0].snippet.title}</p>
-            <hr/>
-          </div>
+            
+              <div key={id} className='video-item'>
+              <img 
+                onClick={() => (
+                  props.setVideo(
+                    props.userSearch ? video.id.videoId
+                    : video.items[0].id))} 
+                src={
+                  props.userSearch ? video.snippet.thumbnails.default.url
+                  : video.items[0].snippet.thumbnails.default.url} 
+                alt='video'
+              />
+              <p>{props.userSearch 
+                ? video.snippet.title
+                : video.items[0].snippet.title}</p>
+              <hr/>
+            </div>
+          
         )) : 'L O A D I N G . . .'
       }
       <footer>
